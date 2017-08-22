@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<style>
+    .wrapNum{
+        width: 50px;
+        background: #000000;
+        text-align: center;
+    }
+    .num{
+        transition: all 0.7s;
+        color: #fff;
+        cursor: pointer;
+    }
+    .line{
+        width: 1px;
+        height: 0px;
+        background: #fff;
+        margin-left: 24px;
+        transition: all 0.7s;
+    }
+    .active{
+        color: #c7a375;
+        font-size: 34px;
+    }
+    .activeLine{
+        height: 100px;
+    }
+</style>
+
+<div class="wrapNum">
+    <div class="num active">01</div>
+        <div class="line activeLine"></div>
+    <div class="num">02</div>
+        <div class="line"></div>
+    <div class="num">03</div>
+        <div class="line"></div>
+    <div class="num">04</div>
+        <div class="line"></div>
+    <div class="num">05</div>
+</div>
+
+<script>
+
+    var lastNum=0;
+
+    var num=document.querySelectorAll(".num");
+    var line=document.querySelectorAll(".line");
+
+    for(var i=0;i<num.length;i++){
+        num[i].onclick=(function (i) {
+            return function () {
+                num[lastNum].className="num";
+                num[i].className="num active";
+                if(i!=4){
+                    line[i].className="line activeLine";
+                }
+                if(lastNum!=4){
+                    line[lastNum].className="line";
+                }
+                lastNum=i;
+                console.log(i);
+            }
+        })(i);
+    }
+
+</script>
+
+</body>
+</html>
